@@ -1,0 +1,113 @@
+
+
+.carousel-component{
+    padding: 64px 0px;
+    margin-left: 120px;
+    width: 100%;
+    & ul{
+        height: max-content;
+        padding: 16px;
+        padding-left: 0px;
+        display: flex;
+        flex: column;
+        gap: 26px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        scroll-snap-type: mandatory;
+        scroll-snap-align: center;
+        & .card{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: ease-out 0.15s;
+            &:hover{
+                transition: ease-in 0.15s;
+                box-shadow: 0px 5px 0px 0px rgba(250,47,47,1);
+                cursor: pointer;
+                transform: translateY(-5px);
+            }
+            & .card-upper{
+                & img{
+                    display: block !important;
+                    width: 200px;
+                    height: 280px;
+                    object-fit: fill;
+                }
+            }
+            & .card-lower{
+                & a{
+                    color: var(--primary);
+                    font-size: 1em;
+                    font-weight: 600;
+                    text-decoration: none;
+                    max-lines: 2;
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        width: 200px;
+                        height: 280px;
+                        margin-top: -296px;
+                       
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 0px) and (max-width: 1000px) {
+        & .carousel-buttons{
+           position: relative;
+           display: flex;
+           flex-direction: row;
+           margin-left: 0;
+           margin-top: 0;
+           gap: 10px;
+           & button{
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: none;
+            background-color: #fff;;
+            transition: ease-out 0.15s;
+            box-shadow: 1px 1px 9px 3px rgba(235,230,235,1);
+             &:focus{
+               background-color: #FF0000;
+               color: #fff;;
+             }
+             &:hover{
+               transition: ease-in 0.15s;
+               background-color: #FF0000;
+               color: #fff;;
+             }
+       }
+    }
+    }
+
+    @media screen and (min-width: 1000px) {
+        & .carousel-buttons{
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            margin-left: -130px;
+            margin-top: -240px;
+            gap: 10px;
+            & button{
+                 padding: 10px 15px;
+                 border-radius: 4px;
+                 border: none;
+                 background-color: #fff;;
+                 transition: ease-out 0.15s;
+                 box-shadow: 1px 1px 9px 3px rgba(235,230,235,1);
+                  &:focus{
+                    background-color: #FF0000;
+                    color: #fff;;
+                  }
+                  &:hover{
+                    cursor: pointer;
+                    transition: ease-in 0.15s;
+                    background-color: #FF0000;
+                    color: #fff;;
+                  }
+            }
+        }
+    }
+}
+

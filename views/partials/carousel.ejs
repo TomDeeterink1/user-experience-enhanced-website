@@ -1,0 +1,61 @@
+<%- include('./head') %>
+
+<section class="carousel-component">
+    <h2>Boeken</h2>
+    <ul class="carousel">
+        <% data.forEach(book => { %>
+            <% if(book.item_type == "book") { %>
+                <li class="card">
+                    <div class="card-upper">
+                        <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="">
+                    </div>
+                    <div class="card-lower">
+                        <a href= "/details/<%= book.id %>"> <%= book.title %></a>
+                    </div>
+                </li>  
+                <% } %>
+                <% }) %> 
+            </ul>
+            <div class="carousel-buttons">
+                <button class="next"><</button>
+                <button class="previous">></button>
+            </div>
+</section>
+
+<script>
+document.querySelectorAll('.carousel-component').forEach(component => {
+        const carousel = component.querySelector('.carousel');
+        const nextButton = component.querySelector('.next');
+        const previousButton = component.querySelector('.previous');
+        const articles = carousel.querySelectorAll('.card');
+
+        nextButton.addEventListener('click', () => scrollCarousel(carousel, articles, -1));
+        previousButton.addEventListener('click', () => scrollCarousel(carousel, articles, 1));
+
+        function scrollCarousel(container, articles, direction) {
+            const articleWidth = articles[0].clientWidth; // Assuming all articles have the same width
+            const scrollAmount =  articleWidth + 26;
+            const currentScrollPosition = container.scrollLeft;
+
+            let targetScrollPosition;
+            if (direction === 1) {
+                targetScrollPosition = currentScrollPosition + scrollAmount;
+            } else {
+                targetScrollPosition = currentScrollPosition - scrollAmount;
+                if (targetScrollPosition < 0) { // Adjust for scrolling back beyond the start
+                    targetScrollPosition = 0;
+                }
+            }
+
+            container.scrollTo({
+                left: targetScrollPosition,
+                behavior: 'smooth',
+            });
+        }
+    });
+</script>
+<%- include('./foot') %>
+
+
+
+

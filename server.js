@@ -30,26 +30,21 @@ app.get('/', function (request, response) {
   response.render('index', data)
 })
 
-// Maak een GET route voor de index
-app.get('/', function (request, response) {
-  // Render index.ejs uit de views map en geef uit FDND API opgehaalde data mee
-  response.render('index', data)
-})
 
 
 const favorieten = [];
 
 // GET route for a detail page with a request parameter id
-app.get('/detail/:id', function (request, response) {
+app.get('/detaisl/:id', function (request, response) {
     // Use the request parameter id to fetch the data from the API
     fetchJson(`https://fdnd-agency.directus.app/items/oba_item/${request.params.id}`)
         .then((items) => {
-            response.render('detail', { items: items.data, favorieten: favorieten });
+            response.render('details', { items: items.data, favorieten: favorieten });
         })
 });
 
 // POST route 
-app.post('/detail/:id', function (request, response) {
+app.post('/details/:id', function (request, response) {
     // Push het huidige item door naar de favorieten array
     // uiteraard moet er is gefetched worden vanuit de api, zodat er de juist data gepost kan worden
     fetchJson(`https://fdnd-agency.directus.app/items/oba_item/${request.params.id}`)
@@ -57,7 +52,7 @@ app.post('/detail/:id', function (request, response) {
           // favorieten is in dit geval inrelevant, de item data is wel belangrijk
             favorieten.push(item.data);
             // Redirect back to the detail page
-            response.redirect(303, '/detail/' + request.params.id);
+            response.redirect(303, '/details/' + request.params.id);
         })
 });
 

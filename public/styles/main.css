@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+
+}
+/* Root */
+
+:root{
+     /* Colors */
+     --main: #fff;
+     --primary: #000000;
+         --primary-low: #04041a;
+     --secondary: #FF0000;
+         --secondary-low: #ee0303;
+     --alternative: #DDD;
+         --alternative-low: #DDD;
+     --grey-one: #707070;
+     --grey-two: #626262;
+     --grey-three: #c8c8c8;
+   
+     /* Spacing */
+     --none: 0px;
+     --extra-small:  4px;
+     --small: 8px;
+     --medium: 16px;
+     --large: 32px;
+     --extra-large: 64px;
+     --extra-extra-large: 128px;
+     --buttons:  8px 16px;
+   
+     /* Borders */
+     --button: 4px;
+     --radius-small: 4px;
+     --radius-medium: 8px;
+     --radius-large: 12px;
+     --radius-extra-large: 16px;
+   
+     /* default font */
+     font-family: Arial, Helvetica, sans-serif;
+ 
+       /* ====== Transition ====== */
+     --tran-03: all 0.2s ease;
+     --tran-03: all 0.3s ease;
+     --tran-04: all 0.3s ease;
+     --tran-05: all 0.3s ease;
+   
+   }
+
+body{
+    overflow: hidden;
+}
