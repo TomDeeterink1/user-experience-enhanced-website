@@ -1,0 +1,69 @@
+.full--detail{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 10px;
+    overflow: visible;
+    @media screen and (min-width: 0px) and (max-width: 1000px) {
+        margin-left: 0px;
+        padding: 32px 16px;
+        width: 90%;
+    }
+    & > a{
+        text-decoration: none;
+        color: var(--primary);
+        &:hover{
+            color: var(--secondary);
+        }
+    }
+    & .detail--text-image{
+        display: flex;
+        flex-direction: row;
+        padding-top: 32px;
+        @media screen and (min-width: 0px) and (max-width: 1000px) {
+            flex-direction: column;
+        }
+        & figure{
+            margin-inline-start: 0px;
+            & img{
+                height: 600px;
+                @media screen and (min-width: 0px) and (max-width: 1000px) {
+                    height: 400px;
+                }
+            }
+        }
+        & article{
+            & h1{
+                font-size: 32px;
+            }
+            & .text-image--category{
+                display: flex;
+                gap: 16px;
+                list-style: none;
+                padding-inline-start: 0px;
+                font-weight: 500;
+            }
+            & div{
+                padding: 16px 0px;
+                display: flex;
+                gap: 22px;
+                & button{
+                    border: none;
+                }
+                @media screen and (min-width: 0px) and (max-width: 1000px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                }
+            }
+        }
+    }
+    & .carousel-component{
+        margin-left: 140px;
+        @media screen and (min-width: 0px) and (max-width: 1000px) {
+            margin-left: 0px;
+        }
+        }
+        & .dummy-card{
+            margin-left: 0px;
+        }
+}

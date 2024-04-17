@@ -35,7 +35,7 @@ app.get('/', function (request, response) {
 const favorieten = [];
 
 // GET route for a detail page with a request parameter id
-app.get('/detaisl/:id', function (request, response) {
+app.get('/details/:id', function (request, response) {
     // Use the request parameter id to fetch the data from the API
     fetchJson(`https://fdnd-agency.directus.app/items/oba_item/${request.params.id}`)
         .then((items) => {

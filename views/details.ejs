@@ -1,0 +1,128 @@
+<%- include('./partials/head') %>
+<div class="full--detail">
+    <a id="goback" href="/"> ☇ Terug naar home </a>
+    <section class="detail--text-image">
+        <figure>
+            <img src="https://fdnd-agency.directus.app/assets/<%= items.afbeelding %>" alt="">
+        </figure>
+        <article>
+            <h1> <%= items.title %></h1>    
+            <ul class="text-image--category">
+                <li><%= items.language %></li>
+                <li><%= items.characteristics %></li>
+                <li><%= items.auteur %></li>
+            </ul>
+            <p> <%- items.description %> </p>
+            <div>
+                <a class="link link-primary">Item huren</a>
+                
+                <form action="/details/<%= items.id %>" method="POST" id="myForm">
+                    <input type="hidden" name="carousel" value="<%= items.id %>">
+                    <button id="submitButton" class="link link-secondary" type="submit"> Toevoegen aan mijn lijst</button>
+                </form>
+                
+            </div>
+            <ul class="text-image--details">
+                <li><%= items.genre %></li>
+                <li><%= items.publisher %></li>
+                <li><%= items.ISBN %></li>
+                <li><%= items.pica_number %></li>
+                <li><%= items.editie %></li>
+                <li><%= items.datetime %></li>
+                <li><%= items.price %></li>
+                <li><%= items.location %></li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="carousel-component">
+        <h2>Favorieten items</h2>
+        <% if (favorieten.length > 0) { %>
+            <ul class="carousel">
+                <% favorieten.forEach(favoriet => { %>
+                    <li class="card">
+                        <div class="card-upper">
+                            <img src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="">
+                        </div>
+                        <div class="card-lower">
+                            <a href="<%= favoriet.id %>"><%= favoriet.title %></a>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+            <div class="carousel-buttons">
+                <button class="next"><</button>
+                <button class="previous">></button>
+            </div>
+        <% } else { %>
+            <!-- Dummy card when favorieten array is empty -->
+            <div class="dummy-card">
+                <p>No favorite items found.</p>
+            </div>
+        <% } %>
+    </section>
+</div>
+
+
+<script>
+document.querySelectorAll('.carousel-component').forEach(component => {
+
+        const carousel = component.querySelector('.carousel');
+        const nextButton = component.querySelector('.next');
+        const previousButton = component.querySelector('.previous');
+        const articles = carousel.querySelectorAll('.card');
+
+        nextButton.addEventListener('click', () => scrollCarousel(carousel, articles, -1));
+        previousButton.addEventListener('click', () => scrollCarousel(carousel, articles, 1));
+
+        function scrollCarousel(container, articles, direction) {
+            const articleWidth = articles[0].clientWidth; // Assuming all articles have the same width
+            const scrollAmount =  articleWidth + 26;
+            const currentScrollPosition = container.scrollLeft;
+
+            let targetScrollPosition;
+            if (direction === 1) {
+                targetScrollPosition = currentScrollPosition + scrollAmount;
+            } else {
+                targetScrollPosition = currentScrollPosition - scrollAmount;
+                if (targetScrollPosition < 0) { // Adjust for scrolling back beyond the start
+                    targetScrollPosition = 0;
+                }
+            }
+
+            container.scrollTo({
+                left: targetScrollPosition,
+                behavior: 'smooth',
+            });
+        }
+    });
+</script>
+
+<script>
+
+    const form = document.getElementById("myForm");
+    const submitButton = document.getElementById("submitButton");
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        submitButton.textContent = "Toegevoegd aan lijst ⇲"
+        submitButton.style.backgroundColor= "#fff"
+        submitButton.style.color= "#FF0000"
+
+        const formData = new FormData(form);
+        const itemId = formData.get("carousel");
+
+       
+            // Send POST request to server
+            const response = await fetch(`/details/${itemId}`, {
+                method: 'POST',
+                body: formData
+                
+            });
+
+    });
+ 
+
+</script>
+
+
+<%- include('./partials/foot') %>
