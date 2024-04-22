@@ -1,10 +1,10 @@
 
 
 <section class="carousel-component">
-    <h2>Boeken</h2>
+    <h2>Cd's</h2>
     <ul class="carousel">
         <% data.forEach(book => { %>
-            <% if(book.item_type == "book") { %>
+            <% if(book.item_type == "cd") { %>
                 <li class="card">
                     <div class="card-upper">
                         <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="">
