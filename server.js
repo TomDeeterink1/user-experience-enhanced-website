@@ -58,22 +58,22 @@ app.post('/details/:id', function (request, response) {
 });
 
 // Maak een GET route voor de family overview
-app.get('/familyoverview/', function (request, response) {
+app.get('/account-overview/', function (request, response) {
   fetchJson(`https://fdnd-agency.directus.app/items/oba_profile`)
         .then((items) => {
-            response.render('familyoverview', { items: items.data ,  selectedItem: items.data , favorieten: favorieten});
+            response.render('account-overview', { items: items.data ,  selectedItem: items.data , favorieten: favorieten});
         })
   
 })
 
 // POST route 
-app.post('/familyoverview/', function (request, response) {
+app.post('/account-overview/', function (request, response) {
   const itemId = request.body.carousel; // De ID van de geselecteerde persoon ophalen vanuit het formulier
   fetchJson(`https://fdnd-agency.directus.app/items/oba_profile/${itemId}`)
       .then((item) => {
           fetchJson(`https://fdnd-agency.directus.app/items/oba_profile`) // Fetch alle items opnieuw
           .then((items) => {
-              response.render('familyoverview', { 
+              response.render('account-overview', { 
                   items: items.data,
                   selectedItem: item.data, // De geselecteerde persoon data doorsturen naar de sjabloon
                   favorieten: favorieten

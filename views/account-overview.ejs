@@ -1,0 +1,104 @@
+
+<%- include('./partials/head') %>
+<div class="wrapper">
+    <section class="family-overview--intro">
+        <a id="goback" href="/"> ☇ Terug naar home </a>
+        <h1> Familie overzicht </h1>
+        <h3> Bekijk de overzichten van:</h3>
+        <div class="users">
+            <% items.forEach(item => { %>
+                <form action="/familyoverview/" method="POST">
+                    <input type="hidden" name="carousel" value="<%= item.id %>">
+                    <button type="submit"> <%= item.name %> </button>
+                </form>
+            <% }) %> 
+        </div>
+    </section>
+
+    <section class="stats">
+        <% if(selectedItem) { %>
+
+            <h2> <%= selectedItem.name %> </h2>
+            <div class="user--info">
+                <ul class="before">
+                    <li> Adres </li>
+                    <li> Postcode </li>
+                    <li> Plaats </li>
+                    <li> Telefoon </li>
+                    <li> Email </li>
+                </ul>  
+                <ul>
+                    <li> <%= selectedItem.adress %></li>
+                    <li> <%= selectedItem.postal_code %></li>
+                    <li> <%= selectedItem.city %></li>
+                    <li> <%= selectedItem.phonenumber %></li>
+                    <li> <%= selectedItem.email %></li>
+                </ul>  
+            </div>
+            <section class="carousel-component">
+                <h2>Favorieten items</h2>
+                <% if (favorieten.length > 0) { %>
+                    <ul id="fav-carousel" class="carousel">
+                        <% favorieten.forEach(favoriet => { %>
+                            <li class="card">
+                                <div class="card-upper">
+                                    <img src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="">
+                                </div>
+                                <div class="card-lower">
+                                    <a href="<%= favoriet.id %>"><%= favoriet.title %></a>
+                                </div>
+                            </li>
+                        <% }) %>
+                    </ul>
+                    <div class="carousel-buttons">
+                        <button class="next"><</button>
+                        <button class="previous">></button>
+                    </div>
+                <% } else { %>
+                    <!-- Dummy card when favorieten array is empty -->
+                    <div class="dummy-card">
+                        <p>No favorite items found.</p>
+                    </div>
+                <% } %>
+            </section>
+        </div>
+        <script>
+        document.querySelectorAll('.carousel-component').forEach(component => {
+        
+                const carousel = component.querySelector('.carousel');
+                const nextButton = component.querySelector('.next');
+                const previousButton = component.querySelector('.previous');
+                const articles = carousel.querySelectorAll('.card');
+        
+                nextButton.addEventListener('click', () => scrollCarousel(carousel, articles, -1));
+                previousButton.addEventListener('click', () => scrollCarousel(carousel, articles, 1));
+        
+                function scrollCarousel(container, articles, direction) {
+                    const articleWidth = articles[0].clientWidth; // Assuming all articles have the same width
+                    const scrollAmount =  articleWidth + 26;
+                    const currentScrollPosition = container.scrollLeft;
+        
+                    let targetScrollPosition;
+                    if (direction === 1) {
+                        targetScrollPosition = currentScrollPosition + scrollAmount;
+                    } else {
+                        targetScrollPosition = currentScrollPosition - scrollAmount;
+                        if (targetScrollPosition < 0) { // Adjust for scrolling back beyond the start
+                            targetScrollPosition = 0;
+                        }
+                    }
+        
+                    container.scrollTo({
+                        left: targetScrollPosition,
+                        behavior: 'smooth',
+                    });
+                }
+            });
+        </script>
+        <% } else { %>
+            <p>Selecteer een persoon om details weer te geven.</p>
+        <% } %>
+    </section>
+</div>
+
+<%- include('./partials/foot') %>

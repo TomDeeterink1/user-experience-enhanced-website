@@ -13,7 +13,7 @@
 
 
 //    carousel animation
-   gsap.from('.card', {duration: 1.06, x: '100vw', ease: "sine.out"});
+   gsap.from('.card', {duration: 1.01, y: '100vw'});
 
 // detail page animation
 const timeline = gsap.timeline()
