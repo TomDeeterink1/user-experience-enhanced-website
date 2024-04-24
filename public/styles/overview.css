@@ -1,6 +1,6 @@
 .wrapper{
-    padding-top: var(--extra-large);
-    padding-left: var(--extra-large);
+    padding-top: 120px;
+    padding-left: 128px;
     max-width: 1400px;
     margin: 0 auto;
     scroll-snap-type: proximity;
@@ -9,59 +9,59 @@
 
         & #goback{
             text-decoration: none;
-            color: var(--primary); 
+            color: #000; 
 
             &:hover{
-                color: var(--primary-color);
+                color: #FF0000;
             }
         }
 
         & h1{
-            padding-top: var(--large);
+            padding-top: 32px;
         }
 
         & h3{
-            margin-top: var(--medium);
+            margin-top: 16px;
         }
                       
         & .users{
             display: flex;
-            gap: var(--medium);
-            padding-top: var(--large);
+            gap: 16px;
+            padding-top: 32px;
             overflow: auto;
 
                 & button{
-                    padding: var(--medium);
+                    padding: 16px;
                     font-weight: 600;
-                    border: 2px solid var(--primary);
+                    border: 2px solid #000;
                     border-radius: 4px;
-                    background-color: var(--main);
+                    background-color: #fff;
                     transform: scale(100%);
                     transition: ease-out 0.2s;
                     
                     &:hover{
                         cursor: pointer;
-                        color: var(--primary-color);
-                        border:  2px solid  var(--primary-color) ;
+                        color: #FF0000;
+                        border:  2px solid  #FF0000 ;
                         transform: scale(96%);
-                        transition: ease-in 0.2s;
+                        transition: ease-in 0.1s;
                     }
                 }
             }
     }
 
     & .stats{
-        margin-top: var(--large);
+        margin-top: 64px;
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-        padding: var(--large);
+        padding: 64px;
         border-radius: 6px;
         & h2{
-            color: var(--primary-color);
+            color: #000;
         }
 
         & .user--info{
             display: flex;
-            gap: var(--medium);
+            gap: 16px;
             & .before{
                 font-weight: 600;
                 & li{
@@ -76,17 +76,17 @@
             & ul{
                 display: flex;
                 flex-direction: column;
-                gap: var(--small);
+                gap: 8px;
                 list-style-type: none;
-                padding-top: var(--medium);
+                padding-top: 16px;
                 & li{
                     font-size: 1.2em;
                 }
             }
         }
 
-        & .carousel--component{
-            padding-left: 0px !important;
+        & .carousel-component{
+            margin-left: 164px !important;
         }
     }
 }

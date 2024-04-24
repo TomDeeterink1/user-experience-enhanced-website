@@ -16,11 +16,13 @@
         scroll-snap-type: mandatory;
         scroll-snap-align: center;
         & .card{
-            width: 200px;
+            
+            width: 200px !important;
             display: flex;
             flex-direction: column;
             gap: 16px;
             transition: ease-out 0.15s;
+            overflow: visible;
             &:hover{
                 transition: ease-in 0.15s;
                 box-shadow: 0px 5px 0px 0px rgba(250,47,47,1);
@@ -28,6 +30,7 @@
                 transform: translateY(-5px);
             }
             & .card-upper{
+                
                 & img{
                     display: block !important;
                     width: 200px;
@@ -36,12 +39,17 @@
                 }
             }
             & .card-lower{
+                max-width: 200px;
+                overflow: hidden;
                 & a{
                     color: var(--primary);
                     font-size: 1em;
                     font-weight: 600;
                     text-decoration: none;
-                    max-lines: 2;
+                    height: 55px;
+                    white-space: nowrap;
+                    text-overflow: clip;
+                    overflow: hidden;
                     &::before{
                         content: "";
                         position: absolute;
@@ -88,7 +96,7 @@
             display: flex;
             flex-direction: row;
             margin-left: -130px;
-            margin-top: -240px;
+            margin-top: -220px;
             gap: 10px;
             & button{
                  padding: 10px 15px;

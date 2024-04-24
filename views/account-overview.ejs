@@ -7,7 +7,7 @@
         <h3> Bekijk de overzichten van:</h3>
         <div class="users">
             <% items.forEach(item => { %>
-                <form action="/familyoverview/" method="POST">
+                <form action="/account-overview/" method="POST">
                     <input type="hidden" name="carousel" value="<%= item.id %>">
                     <button type="submit"> <%= item.name %> </button>
                 </form>

@@ -63,7 +63,6 @@
     </section>
 </div>
 
-
 <script>
 document.querySelectorAll('.carousel-component').forEach(component => {
 
@@ -99,30 +98,43 @@ document.querySelectorAll('.carousel-component').forEach(component => {
 </script>
 
 <script>
-
     const form = document.getElementById("myForm");
     const submitButton = document.getElementById("submitButton");
+    const favCarousel = document.getElementById("fav-carousel");
+
     form.addEventListener("submit", async function(event) {
         event.preventDefault();
-        submitButton.textContent = "Toegevoegd aan lijst ⇲"
-        submitButton.style.backgroundColor= "#fff"
-        submitButton.style.color= "#FF0000"
+        submitButton.textContent = "Toegevoegd aan lijst ⇲";
+        submitButton.style.backgroundColor = "#fff";
+        submitButton.style.color = "#FF0000";
 
         const formData = new FormData(form);
         const itemId = formData.get("carousel");
 
-       
-            // Send POST request to server
-            const response = await fetch(`/details/${itemId}`, {
-                method: 'POST',
-                body: formData
-        
-            });
-            
+        try {
+            const currentdata = window.location.pathname.split('/').pop();
 
+            const response = await fetch(`https://fdnd-agency.directus.app/items/oba_item/` + currentdata)
+
+            const itemData =  await response.json();
+
+           const newItemHTML = `
+                <li class="card">
+                    <div class="card-upper">
+                        <img src="https://fdnd-agency.directus.app/assets/${itemData.afbeelding}" alt="">
+                    </div>
+                    <div class="card-lower">
+                        <a href="${itemData.Id}"> ${itemData.name} </a>
+                    </div>
+                </li>
+            `;
+
+            favCarousel.innerHTML += newItemHTML;
+
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        }
     });
- 
-
 </script>
 
 

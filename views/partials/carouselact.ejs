@@ -7,7 +7,10 @@
             <% if(book.item_type == "activity") { %>
                 <li class="card">
                     <div class="card-upper">
-                        <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="">
+                        <picture>
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>?&format=webp" type="image/webp">
+                            <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %>">
+                        </picture>
                     </div>
                     <div class="card-lower">
                         <a href= "/details/<%= book.id %>"> <%= book.title %></a>
