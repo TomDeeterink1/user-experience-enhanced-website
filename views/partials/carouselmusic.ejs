@@ -2,27 +2,30 @@
 
 <section class="carousel-component">
     <h2>Cd's</h2>
-    <ul class="carousel">
-        <% data.forEach(book => { %>
-            <% if(book.item_type == "cd") { %>
-                <li class="card">
-                    <div class="card-upper">
-                        <picture>
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>?&format=webp" type="image/webp">
-                            <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %>">
-                        </picture>
+    <div class="flexbox">
+        <ul class="carousel">
+            
+            <% data.forEach(book => { %>
+                    <% if(book.item_type == "cd") { %>
+                        <li class="card">
+                            <div class="card-upper">
+                                <picture>
+                                    <source srcset="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>?&format=webp" type="image/webp">
+                                    <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %>">
+                                </picture>
+                            </div>
+                            <div class="card-lower">
+                                <a href= "/details/<%= book.id %>"> <%= book.title %></a>
+                            </div>
+                        </li>  
+                        <% } %>
+                        <% }) %> 
+                    </ul>
+                    <div class="carousel-buttons">
+                        <button class="next"><</button>
+                        <button class="previous">></button>
                     </div>
-                    <div class="card-lower">
-                        <a href= "/details/<%= book.id %>"> <%= book.title %></a>
-                    </div>
-                </li>  
-                <% } %>
-                <% }) %> 
-            </ul>
-            <div class="carousel-buttons">
-                <button class="next"><</button>
-                <button class="previous">></button>
-            </div>
+                </div>
 </section>
 
 <script>

@@ -37,23 +37,26 @@
 
     <section class="carousel-component">
         <h2>Favorieten items</h2>
-        <% if (favorieten.length > 0) { %>
-            <ul id="fav-carousel" class="carousel">
-                <% favorieten.forEach(favoriet => { %>
-                    <li class="card">
-                        <div class="card-upper">
-                            <img src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="">
-                        </div>
-                        <div class="card-lower">
-                            <a href="<%= favoriet.id %>"><%= favoriet.title %></a>
-                        </div>
-                    </li>
-                <% }) %>
-            </ul>
-            <div class="carousel-buttons">
-                <button class="next"><</button>
-                <button class="previous">></button>
+        <% if (favorieten.length === 0) { %>
+            <div class="flexbox">
+                <ul id="fav-carousel" class="carousel">
+                    <% favorieten.forEach(favoriet => { %>
+                        <li class="card">
+                            <div class="card-upper">
+                                <img src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="">
+                            </div>
+                            <div class="card-lower">
+                                <a href="<%= favoriet.id %>"><%= favoriet.title %></a>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+                <div class="carousel-buttons">
+                    <button class="next"><</button>
+                    <button class="previous">></button>
+                </div>
             </div>
+            
         <% } else { %>
             <!-- Dummy card when favorieten array is empty -->
             <div class="dummy-card">
@@ -112,24 +115,28 @@ document.querySelectorAll('.carousel-component').forEach(component => {
         const itemId = formData.get("carousel");
 
         try {
+            
             const currentdata = window.location.pathname.split('/').pop();
 
-            const response = await fetch(`https://fdnd-agency.directus.app/items/oba_item/` + currentdata)
+            const response = await fetch(`https://fdnd-agency.directus.app/items/oba_item/` + currentdata )
 
             const itemData =  await response.json();
 
            const newItemHTML = `
-                <li class="card">
+                <li id="clientcard" class="card">
                     <div class="card-upper">
-                        <img src="https://fdnd-agency.directus.app/assets/${itemData.afbeelding}" alt="">
+                        <img src="https://fdnd-agency.directus.app/assets/<%= itemData.afbeelding %>" alt="">
                     </div>
                     <div class="card-lower">
-                        <a href="${itemData.Id}"> ${itemData.name} </a>
+                        <a href="<%= itemData.Id %>"> <%= itemData.title %> </a>
                     </div>
                 </li>
             `;
 
-            favCarousel.innerHTML += newItemHTML;
+            console.log(newItemHTML)
+
+            favCarousel.innerHTML += newItemHTML
+
 
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);

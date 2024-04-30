@@ -35,12 +35,12 @@ app.get('/', function (request, response) {
 
 const favorieten = [];
 
-// GET route for a detail page with a request parameter id
+// GET route for a detail page with a request parameter ide
 app.get('/details/:id', function (request, response) {
     // Use the request parameter id to fetch the data from the API
     fetchJson(`https://fdnd-agency.directus.app/items/oba_item/${request.params.id}`)
         .then((items) => {
-            response.render('details', { items: items.data, favorieten: favorieten });
+            response.render('details', { items: items.data, favorieten: favorieten , itemData: items.data });
         })
 });
 
@@ -51,8 +51,9 @@ app.post('/details/:id', function (request, response) {
     fetchJson(`https://fdnd-agency.directus.app/items/oba_item/${request.params.id}`)
         .then((item) => {
           // favorieten is in dit geval inrelevant, de item data is wel belangrijk
-            favorieten.push(item.data);
+            favorieten.push(item.data );
             // Redirect back to the detail page
+            
             response.redirect(303, '/details/' + request.params.id);
         })
 });
@@ -76,7 +77,7 @@ app.post('/account-overview/', function (request, response) {
               response.render('account-overview', { 
                   items: items.data,
                   selectedItem: item.data, // De geselecteerde persoon data doorsturen naar de sjabloon
-                  favorieten: favorieten
+                  favorieten: favorieten,
               });
           })
       })
