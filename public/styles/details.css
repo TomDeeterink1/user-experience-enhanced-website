@@ -18,11 +18,12 @@
     & .detail--text-image{
         display: flex;
         flex-direction: row;
+        gap: 32px;
         padding-top: 32px;
         @media screen and (min-width: 0px) and (max-width: 1000px) {
             flex-direction: column;
         }
-        & figure{
+        & picture{
             margin-inline-start: 0px;
             & img{
                 height: 600px;

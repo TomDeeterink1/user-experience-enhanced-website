@@ -2,9 +2,10 @@
 <div class="full--detail">
     <a id="goback" href="/"> ☇ Terug naar home </a>
     <section class="detail--text-image">
-        <figure>
-            <img src="https://fdnd-agency.directus.app/assets/<%= items.afbeelding %>" alt="">
-        </figure>
+        <picture>
+            <source srcset="https://fdnd-agency.directus.app/assets/<%= items.afbeelding %>?&format=webp" type="image/webp">
+            <img loading="lazy" src="https://fdnd-agency.directus.app/assets/<%= items.afbeelding %>" alt="">
+        </picture>
         <article>
             <h1> <%= items.title %></h1>    
             <ul class="text-image--category">
@@ -43,7 +44,11 @@
                     <% favorieten.forEach(favoriet => { %>
                         <li class="card">
                             <div class="card-upper">
-                                <img src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="">
+                                <picture>
+                                    <source srcset="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>?&format=webp" type="image/webp">
+                                    <img loading="lazy" height="280" width="200" src="https://fdnd-agency.directus.app/assets/<%= favoriet.afbeelding %>" alt="<%= favoriet.title %>">
+                                </picture>
+                                
                             </div>
                             <div class="card-lower">
                                 <a href="<%= favoriet.id %>"><%= favoriet.title %></a>

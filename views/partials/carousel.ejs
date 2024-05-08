@@ -11,7 +11,7 @@
                         <div class="card-upper">
                             <picture>
                                 <source srcset="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>?&format=webp" type="image/webp">
-                                <img style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %>">
+                                <img loading="lazy" height="280" width="200" style="display: none;" src="https://fdnd-agency.directus.app/assets/<%= book.afbeelding %>" alt="<%= book.title %>">
                             </picture>
                         </div>
                         <div class="card-lower">
