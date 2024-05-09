@@ -16,6 +16,14 @@
      --grey-one: #707070;
      --grey-two: #626262;
      --grey-three: #c8c8c8;
+
+       /* ===== Colors ===== */
+       --body-color: #E4E9F7;
+       --sidebar-color: #FFF;
+       --primary-color: #FF0000;
+       --primary-color-light: #F6F5FF;
+       --toggle-color: #DDD;
+       --text-color: #707070;
    
      /* Spacing */
      --none: 0px;
@@ -44,12 +52,11 @@
      --tran-05: all 0.3s ease;
    
    }
+   
 
 body{
     /* overflow: hidden; */
 }
-
-
 
     .link{
         padding: 13.42px 22px;
@@ -81,3 +88,24 @@ body{
           background-color: #fff;
         }
       }
+
+/* scroll up button */
+
+.scrollup{
+  padding: 10px 11px;
+  font-size: 1.4em;
+  font-weight: 400;
+  color: white;
+  border: none;
+  background-color: #FF0000 ;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  border-radius: 100%;
+
+  &:hover{
+  cursor: pointer;
+  background-color: white;
+  color: #FF0000 ;
+  }
+}

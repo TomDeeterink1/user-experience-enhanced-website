@@ -142,12 +142,22 @@ document.querySelectorAll('.carousel-component').forEach(component => {
 
             favCarousel.innerHTML += newItemHTML
 
-
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
         }
     });
 </script>
 
+
+<script>
+     gsap.registerPlugin(ScrollToPlugin)
+
+    const button = document.getElementById('submitButton');
+
+
+    button.addEventListener('click', scrolldown =>{
+    gsap.to(window, { duration: 1.2, scrollTo: 800  , delay: 0.2 , ease: "back.out(1.7)"});
+})
+</script>
 
 <%- include('./partials/foot') %>

@@ -59,6 +59,7 @@
         }
     }
     & .carousel-component{
+        height: 564px;
         margin-left: 140px;
         @media screen and (min-width: 0px) and (max-width: 1000px) {
             margin-left: 0px;

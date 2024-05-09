@@ -2,7 +2,7 @@
 
 .carousel-component{
     padding: 64px 0px;
-    margin-left: 120px;
+    margin-left: 80px;
     width: 100%;
     & .flexbox{
         display: flex;
@@ -71,6 +71,8 @@
         }
     }
     @media screen and (min-width: 0px) and (max-width: 1000px) {
+
+        
         & .flexbox{
             flex-direction: column;
     align-items: flex-start;
@@ -130,4 +132,10 @@
         }
     }
 }
+@media screen and (min-width: 0px) and (max-width: 1000px) {
 
+    .carousel-component{
+        margin-left: 16px ;
+        
+    }
+}
