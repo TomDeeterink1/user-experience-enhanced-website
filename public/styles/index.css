@@ -1,5 +1,16 @@
 .section-1{
+    
     margin: 0 auto;
     max-width: 1280px;
-    overflow: hidden;
+    & .hero{
+        padding-top: 80px;
+        & picture{
+            & img{
+                width: 100%;
+                height:  90px;
+            }
+        
+        }
+    }
 }
+

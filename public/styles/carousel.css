@@ -2,7 +2,8 @@
 
 .carousel-component{
     padding: 64px 0px;
-    margin-left: 80px;
+    
+    overflow: visible;
     width: 100%;
     & .flexbox{
         display: flex;
@@ -87,7 +88,7 @@
            gap: 10px;
            & button{
             padding: 15px 20px;
-            border-radius: 4px;
+            border-radius: 100%;
             border: none;
             background-color: #fff;;
             transition: ease-out 0.15s;
@@ -112,8 +113,9 @@
             flex-direction: row;
             gap: 10px;
             & button{
-                padding: 15px 20px;
-                 border-radius: 4px;
+                padding: 15px 19px;
+                border-radius: 100%;
+
                  border: none;
                  background-color: #fff;;
                  transition: ease-out 0.15s;
